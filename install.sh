@@ -161,7 +161,7 @@ deploy_application() {
   pnpm --dir "${INSTALL_DIR}/website" install --frozen-lockfile
 
   log "构建前端页面"
-  pnpm --dir "${INSTALL_DIR}/website" deploy
+  pnpm --dir "${INSTALL_DIR}/website" run deploy
 
   log "构建 OpenBot 后端"
   pnpm --dir "${INSTALL_DIR}" build
