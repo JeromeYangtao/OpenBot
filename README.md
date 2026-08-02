@@ -56,6 +56,14 @@ pnpm start:dev
 
 部署时也可通过同名环境变量覆盖配置，例如使用 `PORT=8080` 指定服务端口。
 
+前端项目位于 `website`，基于 UmiJS：
+
+```bash
+cd website
+pnpm install
+pnpm dev
+```
+
 ### 支持的交易所
 
 - [ ] Gate

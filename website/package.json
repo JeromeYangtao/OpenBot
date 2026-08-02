@@ -1,0 +1,23 @@
+{
+  "name": "openbot-website",
+  "private": true,
+  "author": "thomson <thomsonyang147@gmail.com>",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "umi": "^4.6.84"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "typescript": "^5.0.3"
+  }
+}
