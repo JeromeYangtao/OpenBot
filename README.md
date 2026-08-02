@@ -23,3 +23,18 @@ OpenBot 计划提供一键安装脚本。用户无需手动下载和配置项目
 ```bash
 curl -fsSL https://raw.githubusercontent.com/JeromeYangtao/OpenBot/main/install.sh | bash
 ```
+
+## 本地开发
+
+项目后端基于 [NestJS](https://nestjs.com/) 和 TypeScript。
+
+```bash
+pnpm install
+pnpm start:dev
+```
+
+服务默认运行在 `http://localhost:3000`。
+
+### 支持的交易所
+
+- [ ] Gate
