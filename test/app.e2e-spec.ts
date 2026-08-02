@@ -2,7 +2,20 @@ import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import request from 'supertest';
 import { App } from 'supertest/types';
-import { AppModule } from './../src/app.module';
+import { AppModule } from './../src/modules/app/module';
+
+jest.mock('ccxt', () => {
+  class ExchangeError extends Error {}
+  class AuthenticationError extends ExchangeError {}
+  class NetworkError extends Error {}
+
+  return {
+    AuthenticationError,
+    ExchangeError,
+    NetworkError,
+    gate: jest.fn(),
+  };
+});
 
 describe('AppController (e2e)', () => {
   let app: INestApplication<App>;
@@ -17,6 +30,12 @@ describe('AppController (e2e)', () => {
       .get('/api/health')
       .expect(200)
       .expect({ status: 'ok' });
+  });
+
+  it('/api/cex/gate/balance reports missing configuration (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/api/cex/gate/balance')
+      .expect(503);
   });
 
   it('/ (GET)', () => {

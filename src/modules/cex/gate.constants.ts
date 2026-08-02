@@ -1,0 +1,2 @@
+export const GATE_CREDENTIALS = Symbol('GATE_CREDENTIALS');
+export const GATE_EXCHANGE_FACTORY = Symbol('GATE_EXCHANGE_FACTORY');

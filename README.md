@@ -58,6 +58,25 @@ pnpm start:dev
 
 生产部署时，NestJS 会在服务根路径托管构建后的前端页面；后端接口统一使用 `/api` 前缀，健康检查地址为 `/api/health`。一键部署脚本会自动安装并构建前后端。
 
+在 `config/env.json` 中配置 Gate API 凭证：
+
+```json
+{
+  "gate": {
+    "apiKey": "<gate-api-key>",
+    "secret": "<gate-api-secret>"
+  }
+}
+```
+
+Gate 账户余额查询接口：
+
+```http
+GET /api/cex/gate/balance
+```
+
+`config/env.json` 已被 Git 忽略，API 凭证不会提交到仓库或包含在接口响应中。接口只返回非零币种的 `free`、`used` 和 `total` 余额。
+
 前端项目位于 `website`，基于 UmiJS：
 
 ```bash
