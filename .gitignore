@@ -83,6 +83,7 @@ out
 .nuxt
 dist
 .output
+/public
 
 # Gatsby files
 .cache/

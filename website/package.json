@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "umi dev",
     "build": "umi build",
+    "deploy": "OPENBOT_DEPLOY=true umi build",
     "postinstall": "umi setup",
     "setup": "umi setup",
     "start": "npm run dev"

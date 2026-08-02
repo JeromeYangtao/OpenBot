@@ -56,12 +56,21 @@ pnpm start:dev
 
 部署时也可通过同名环境变量覆盖配置，例如使用 `PORT=8080` 指定服务端口。
 
+生产部署时，NestJS 会在服务根路径托管构建后的前端页面；后端接口统一使用 `/api` 前缀，健康检查地址为 `/api/health`。一键部署脚本会自动安装并构建前后端。
+
 前端项目位于 `website`，基于 UmiJS：
 
 ```bash
 cd website
 pnpm install
 pnpm dev
+```
+
+构建前端并部署到后端使用的 `public` 目录：
+
+```bash
+cd website
+npm run deploy
 ```
 
 ### 支持的交易所

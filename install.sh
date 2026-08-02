@@ -157,7 +157,13 @@ deploy_application() {
   log "安装项目依赖"
   pnpm --dir "${INSTALL_DIR}" install --frozen-lockfile
 
-  log "构建 OpenBot"
+  log "安装前端依赖"
+  pnpm --dir "${INSTALL_DIR}/website" install --frozen-lockfile
+
+  log "构建前端页面"
+  pnpm --dir "${INSTALL_DIR}/website" deploy
+
+  log "构建 OpenBot 后端"
   pnpm --dir "${INSTALL_DIR}" build
 
   log "通过 PM2 启动 OpenBot"
