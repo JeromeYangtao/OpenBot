@@ -148,6 +148,15 @@ checkout_source() {
   fi
 }
 
+restart_with_latest_installer() {
+  if [[ "${OPENBOT_INSTALLER_REEXEC:-0}" == "1" ]]; then
+    return
+  fi
+
+  log "切换到最新部署脚本"
+  exec env OPENBOT_INSTALLER_REEXEC=1 bash "${INSTALL_DIR}/install.sh" "$@"
+}
+
 deploy_application() {
   if [[ ! -f "${INSTALL_DIR}/config/env.json" ]]; then
     log "从模板创建配置文件"
@@ -187,6 +196,7 @@ main() {
   ensure_node
   ensure_node_tools
   checkout_source
+  restart_with_latest_installer "$@"
   deploy_application
   log "部署完成：http://localhost:$(get_application_port)"
   log "运行 'pm2 status' 查看进程，运行 'pm2 logs ${APP_NAME}' 查看日志。"
