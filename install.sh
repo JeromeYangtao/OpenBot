@@ -4,7 +4,7 @@ set -Eeuo pipefail
 
 readonly REPOSITORY_URL="https://github.com/JeromeYangtao/OpenBot.git"
 readonly REPOSITORY_BRANCH="main"
-readonly REQUIRED_NODE_MAJOR=20
+readonly REQUIRED_NODE_MAJOR=22
 readonly PNPM_VERSION="10.19.0"
 readonly APP_NAME="openbot"
 readonly INSTALL_DIR="${OPENBOT_INSTALL_DIR:-${HOME}/.openbot/app}"

@@ -84,6 +84,7 @@ out
 dist
 .output
 /public
+/data
 
 # Gatsby files
 .cache/

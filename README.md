@@ -26,7 +26,7 @@ curl -fsSL https://raw.githubusercontent.com/JeromeYangtao/OpenBot/main/install.
 
 部署脚本支持 Linux，并检查以下环境依赖：
 
-- Node.js 20 或更高版本
+- Node.js 22 或更高版本
 - pnpm
 - PM2
 
@@ -76,6 +76,22 @@ GET /api/cex/gate/balance
 ```
 
 `config/env.json` 已被 Git 忽略，API 凭证不会提交到仓库或包含在接口响应中。接口只返回非零币种的 `free`、`used` 和 `total` 余额。
+
+## 数据库
+
+OpenBot 使用 Node.js 内置 SQLite，默认数据库文件为 `data/openbot.db`。应用首次启动时会自动创建目录和数据库，并启用 WAL 与外键约束。
+
+数据库路径可在 `config/env.json` 中修改：
+
+```json
+{
+  "database": {
+    "path": "data/openbot.db"
+  }
+}
+```
+
+`data` 目录已被 Git 忽略，重复部署不会覆盖数据库文件。备份时请同时保存 `openbot.db` 以及可能存在的 `openbot.db-wal`、`openbot.db-shm` 文件。
 
 前端项目位于 `website`，基于 UmiJS：
 
